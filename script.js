@@ -22,7 +22,7 @@ function shuffleArray(array) {
 
 function buttonBuilder(){
     for (j = 2; j < 11; j++) {
-        $("body").append("<button class='groupBtn' value='" + j + "'>" + j + "</button>");
+        $(".header").append("<button class='groupBtn' value='" + j + "'>" + j + "</button>");
     }
 }
 
@@ -30,8 +30,7 @@ function buildGroups(btnVal) {
     people = ["Erik", "Aaron", "Alicia", "Casie", "Clare", "Cody", "Jeanne", "Kaitlin", "Kelly", "Luke", "Mary", "Michael", "Michelle", "Rom", "Steve", "Terry", "Tracy", "Vince", "Brian", "Chelsea"];
     newOrder = [];
     buttonValue = btnVal;
-    var randomizeGroup = people;
-    newOrder = shuffleArray(randomizeGroup);
+    newOrder = shuffleArray(people);
 
     console.log("People array: " + people);
     console.log("Shuffled people: " + newOrder);
@@ -56,16 +55,16 @@ function buildGroups(btnVal) {
 $(document).ready(function(){
 
     buttonBuilder();
-    $("body").append("<br><button class='generateBtn' value='generate'>Generate Groups</button>");
+    $(".header").append("<br><button class='generateBtn' value='generate'>Generate Groups</button>");
 
 
-    $("body").on('click', ".groupBtn", function(){
+    $(".header").on('click', ".groupBtn", function(){
         var buttonValue = $(this).val();
         console.log("Button Value: "+buttonValue);
         buildGroups(buttonValue);
     });
 
-    $("body").on('click', ".generateBtn", function(){
+    $(".header").on('click', ".generateBtn", function(){
         $(".displayGroups").empty();
         for (i = 0; i < finishedGroups.length; i++) {
             var groupNum = i + 1;
