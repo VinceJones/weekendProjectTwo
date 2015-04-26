@@ -71,5 +71,6 @@ $(document).ready(function(){
         }
         //$(".displayGroups").animate({left: 200px}, "slow");
         $(".displayGroups").animate({fontSize: '1.5em'}, "slow");
+        $(".displayGroups").css({backgroundColor: '#07AA9E'});
     });
 });
