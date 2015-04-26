@@ -22,7 +22,7 @@ function shuffleArray(array) {
 
 function buttonBuilder(){
     for (j = 2; j < 11; j++) {
-        $(".container").append("<button class='groupBtn' value='" + j + "'>" + j + "</button>");
+        $("body").append("<button class='groupBtn' value='" + j + "'>" + j + "</button>");
     }
 }
 
@@ -45,9 +45,10 @@ function buildGroups(btnVal) {
         var length = numPerGroup[buttonValue][j];
         for ( k = 0; k < length; k++) {
             var person = newOrder.pop();
-            group.push("<li>" + person + "</li>");
+            group.push(person);
         }
-        finishedGroups.push("<div class='" + j + "'+ <ul>"+group+"</ul></div>");
+        //finishedGroups.push("<div class='" + j + "'+ <ul>"+group+"</ul></div>");
+        finishedGroups.push(group);
         console.log(group);
     }
 }
@@ -55,20 +56,25 @@ function buildGroups(btnVal) {
 $(document).ready(function(){
 
     buttonBuilder();
-    $(".container").append("<br><button class='generateBtn' value='generate'>Generate Groups</button>");
+    $("body").append("<br><button class='generateBtn' value='generate'>Generate Groups</button>");
 
 
-    $(".container").on('click', ".groupBtn", function(){
+    $("body").on('click', ".groupBtn", function(){
         var buttonValue = $(this).val();
         console.log("Button Value: "+buttonValue);
         buildGroups(buttonValue);
     });
 
-    $(".container").on('click', ".generateBtn", function(){
+    $("body").on('click', ".generateBtn", function(){
+        $(".displayGroups").empty();
         for (i = 0; i < finishedGroups.length; i++) {
             var groupNum = i + 1;
-            $(".displayGroups").append("Group " + groupNum + "<br>" + finishedGroups[i]);
-            //$(".displayGroups").append(finishedGroups[i]);
+            $(".displayGroups").append("<div class'" + groupNum + "'>Group " + groupNum);
+            for (k = 0; k < finishedGroups[i].length; k++) {
+                $(".displayGroups").append("<br>" + finishedGroups[i][k] + "<br>");
+            }
+            $(".displayGroups").append("</div>");
+
 
 
         }

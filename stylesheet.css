@@ -1,3 +1,6 @@
-div {
-    display: block;
+.displayGroups {
+    display: inline-flex;
+}
+button {
+    display:inline;
 }
