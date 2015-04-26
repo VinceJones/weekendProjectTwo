@@ -27,6 +27,7 @@ function buttonBuilder(){
 }
 
 function buildGroups(btnVal) {
+    people = ["Erik", "Aaron", "Alicia", "Casie", "Clare", "Cody", "Jeanne", "Kaitlin", "Kelly", "Luke", "Mary", "Michael", "Michelle", "Rom", "Steve", "Terry", "Tracy", "Vince", "Brian", "Chelsea"];
     newOrder = [];
     buttonValue = btnVal;
     var randomizeGroup = people;
@@ -39,7 +40,8 @@ function buildGroups(btnVal) {
 
     for (j = 0; j < numPerGroup[buttonValue].length; j++) {
         group = [];
-        console.log("////// Group " + j + " //////");
+        var groupNum = j + 1;
+        console.log("////// Group " + groupNum + " //////");
         var length = numPerGroup[buttonValue][j];
         for ( k = 0; k < length; k++) {
             var person = newOrder.pop();
