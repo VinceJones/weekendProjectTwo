@@ -8,6 +8,8 @@ var newOrder = [];
 var people = ["Erik", "Aaron", "Alicia", "Casie", "Clare", "Cody", "Jeanne", "Kaitlin", "Kelly", "Luke", "Mary", "Michael", "Michelle", "Rom", "Steve", "Terry", "Tracy", "Vince", "Brian", "Chelsea"];
 var numPerGroup = [0,0, [10, 10], [7,7,6], [5, 5, 5, 5], [4, 4, 4, 4, 4], [4, 4, 3, 3, 3, 3], [3, 3, 3, 3, 3, 3, 2], [3, 3, 3, 3, 2, 2, 2, 2], [3, 3, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2, 2] ];
 
+function buildNumPerGroup(peopleArray)
+
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
         var j = Math.floor(Math.random() * (i + 1));
@@ -43,7 +45,6 @@ function buildGroups(btnVal) {
             var person = newOrder.pop();
             group.push(person);
         }
-        //finishedGroups.push("<div class='" + j + "'+ <ul>"+group+"</ul></div>");
         finishedGroups.push(group);
         console.log(group);
     }
@@ -61,16 +62,19 @@ $(document).ready(function(){
 
     $(".header").on('click', ".generateBtn", function(){
         $(".displayGroups").empty();
+        $(".displayGroups").animate({fontSize: '1em'}, "slow");
         for (i = 0; i < finishedGroups.length; i++) {
             groupNum = i + 1;
-            $(".displayGroups").append("<div class='group" + groupNum + "'>Group " + groupNum+"<br>");
+            //$(".displayGroups").append("<div class='group" + groupNum + "'>Group " + groupNum+"<br>");
+            $(".displayGroups").append("<div>Group " + groupNum+"<br></div>");
             for (k = 0; k < finishedGroups[i].length; k++) {
-                $(".displayGroups").hide().slideDown("slow").append("<br>" + finishedGroups[i][k] + "<br>");
+                $(".displayGroups").hide().slideDown("slow").append("<br>" + finishedGroups[i][k] + "");
             }
-            $(".displayGroups").append("</div>");
+            $(".displayGroups").append("");
         }
-        //$(".displayGroups").animate({left: 200px}, "slow");
-        $(".displayGroups").animate({fontSize: '1.5em'}, "slow");
+        $(".displayGroups").animate({fontSize: '1.25em'}, "slow");
         $(".displayGroups").css({backgroundColor: '#07AA9E'});
+        $(".displayGroups").css({margin: '15px auto 15px auto'});
+        $(".displayGroups").css({width: 'auto'});
     });
 });

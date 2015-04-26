@@ -1,17 +1,37 @@
+body {
+    background-color: #809E9B;
+}
+
 .displayGroups {
-    display: inline-flex;
-    margin-left: 30%;
-    margin-right: auto;
+    /*display: inline-flex;*/
+    /*margin: auto;*/
+    /*padding: 15px;*/
+    /*border-radius: 15px;*/
+    /*text-align: center;*/
+    /*font-family: "Poiret One";*/
+    /*background-color: white;*/
+    /*width: auto;*/
+
+    display: flex;
+    justify-content:center;
+    align-content: center;
+    margin: 0 20%;
+    height: auto;
+    width: auto;
+    /*margin-left: 30%;*/
+    /*margin-right: auto;*/
     padding: 15px;
     border-radius: 15px;
     text-align: center;
     font-family: "Poiret One";
-    background-color: white;
-    width: auto;
-
-    align-content: center;
+    background-color: #809E9B;
 
 }
+
+.container {
+    background-color: #809E9B;
+}
+
 button {
     display:inline;
     font-family: "Fjalla One";
@@ -21,14 +41,4 @@ button {
     margin: 15px auto 15px auto;
     text-align: center;
     font-family: "Fjalla One";
-}
-
-/*.container {*/
-    /*display: block;*/
-    /*margin: 15px auto 15px auto;*/
-    /*background-color: #DAE5E3;*/
-    /*padding: 15px auto 15px auto;*/
-/*}*/
-.group1 .group2 .group3 .group4 .group5 .group6 .group7 .group8 .group9 .group10 {
-    background-color: black;
 }
