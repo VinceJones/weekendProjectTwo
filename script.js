@@ -5,10 +5,29 @@ var groupNum;
 var group = [];
 var finishedGroups = [];
 var newOrder = [];
-var people = ["Erik", "Aaron", "Alicia", "Casie", "Clare", "Cody", "Jeanne", "Kaitlin", "Kelly", "Luke", "Mary", "Michael", "Michelle", "Rom", "Steve", "Terry", "Tracy", "Vince", "Brian", "Chelsea"];
-var numPerGroup = [0,0, [10, 10], [7,7,6], [5, 5, 5, 5], [4, 4, 4, 4, 4], [4, 4, 3, 3, 3, 3], [3, 3, 3, 3, 3, 3, 2], [3, 3, 3, 3, 2, 2, 2, 2], [3, 3, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2, 2] ];
+var people = [];
+var newNumPerGroup = [];
 
-function buildNumPerGroup(peopleArray)
+function buildNumPerGroup(people, buttonValue) {
+    newNumPerGroup = [];
+    var peopleLength = people.length;
+    var btnVal = buttonValue;
+    console.log("People length: " + peopleLength + " Button Value: "+ btnVal);
+
+    var baseGroupVal = Math.floor( peopleLength / btnVal);
+    console.log("Base group value: " + baseGroupVal);
+
+    for (k = 0; k < buttonValue; k++){
+        newNumPerGroup.push(baseGroupVal);
+    }
+    var remainder = peopleLength % btnVal;
+    console.log("Remainder of peopleLength / buttonValue: " + remainder);
+    for (k = 0; k < remainder; k++){
+        newNumPerGroup[k]+=1;
+    }
+    console.log("Number of people per group: " + newNumPerGroup);
+    return newNumPerGroup;
+}
 
 function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
@@ -27,20 +46,21 @@ function buttonBuilder(){
 }
 
 function buildGroups(btnVal) {
-    people = ["Erik", "Aaron", "Alicia", "Casie", "Clare", "Cody", "Jeanne", "Kaitlin", "Kelly", "Luke", "Mary", "Michael", "Michelle", "Rom", "Steve", "Terry", "Tracy", "Vince", "Brian", "Chelsea"];
+    peopleForGroups = ["Erik", "Aaron", "Alicia", "Casie", "Clare", "Cody", "Jeanne", "Kaitlin", "Kelly", "Luke", "Mary", "Michael", "Michelle", "Rom", "Steve", "Terry", "Tracy", "Vince", "Brian", "Chelsea"];
     newOrder = [];
     finishedGroups = [];
     buttonValue = btnVal;
-    newOrder = shuffleArray(people);
+    numPerGroup = buildNumPerGroup(peopleForGroups, buttonValue);
+    newOrder = shuffleArray(peopleForGroups);
 
-    console.log("People array: " + people);
+    console.log("People array: " + peopleForGroups);
     console.log("Shuffled people: " + newOrder);
 
-    for (j = 0; j < numPerGroup[buttonValue].length; j++) {
+    for (j = 0; j < numPerGroup.length; j++) {
         group = [];
         groupNum = j + 1;
         console.log("////// Group " + groupNum + " //////");
-        var length = numPerGroup[buttonValue][j];
+        var length = numPerGroup[j];
         for ( k = 0; k < length; k++) {
             var person = newOrder.pop();
             group.push(person);
