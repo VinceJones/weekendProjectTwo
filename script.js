@@ -1,12 +1,11 @@
-
 var i;
 var j;
 var k;
+var groupNum;
 var group = [];
 var finishedGroups = [];
 var newOrder = [];
 var people = ["Erik", "Aaron", "Alicia", "Casie", "Clare", "Cody", "Jeanne", "Kaitlin", "Kelly", "Luke", "Mary", "Michael", "Michelle", "Rom", "Steve", "Terry", "Tracy", "Vince", "Brian", "Chelsea"];
-
 var numPerGroup = [0,0, [10, 10], [7,7,6], [5, 5, 5, 5], [4, 4, 4, 4, 4], [4, 4, 3, 3, 3, 3], [3, 3, 3, 3, 3, 3, 2], [3, 3, 3, 3, 2, 2, 2, 2], [3, 3, 2, 2, 2, 2, 2, 2, 2], [2, 2, 2, 2, 2, 2, 2, 2, 2, 2] ];
 
 function shuffleArray(array) {
@@ -19,7 +18,6 @@ function shuffleArray(array) {
     return array;
 }
 
-
 function buttonBuilder(){
     for (j = 2; j < 11; j++) {
         $(".header").append("<button class='groupBtn' value='" + j + "'>" + j + "</button>");
@@ -29,17 +27,16 @@ function buttonBuilder(){
 function buildGroups(btnVal) {
     people = ["Erik", "Aaron", "Alicia", "Casie", "Clare", "Cody", "Jeanne", "Kaitlin", "Kelly", "Luke", "Mary", "Michael", "Michelle", "Rom", "Steve", "Terry", "Tracy", "Vince", "Brian", "Chelsea"];
     newOrder = [];
+    finishedGroups = [];
     buttonValue = btnVal;
     newOrder = shuffleArray(people);
 
     console.log("People array: " + people);
     console.log("Shuffled people: " + newOrder);
 
-    finishedGroups = [];
-
     for (j = 0; j < numPerGroup[buttonValue].length; j++) {
         group = [];
-        var groupNum = j + 1;
+        groupNum = j + 1;
         console.log("////// Group " + groupNum + " //////");
         var length = numPerGroup[buttonValue][j];
         for ( k = 0; k < length; k++) {
@@ -53,10 +50,8 @@ function buildGroups(btnVal) {
 }
 
 $(document).ready(function(){
-
     buttonBuilder();
     $(".header").append("<br><button class='generateBtn' value='generate'>Generate Groups</button>");
-
 
     $(".header").on('click', ".groupBtn", function(){
         var buttonValue = $(this).val();
@@ -67,18 +62,14 @@ $(document).ready(function(){
     $(".header").on('click', ".generateBtn", function(){
         $(".displayGroups").empty();
         for (i = 0; i < finishedGroups.length; i++) {
-            var groupNum = i + 1;
-            $(".displayGroups").append("<div class'" + groupNum + "'>Group " + groupNum);
+            groupNum = i + 1;
+            $(".displayGroups").append("<div class='group" + groupNum + "'>Group " + groupNum+"<br>");
             for (k = 0; k < finishedGroups[i].length; k++) {
-                $(".displayGroups").append("<br>" + finishedGroups[i][k] + "<br>");
+                $(".displayGroups").hide().slideDown("slow").append("<br>" + finishedGroups[i][k] + "<br>");
             }
             $(".displayGroups").append("</div>");
-
-
-
         }
-
-
+        //$(".displayGroups").animate({left: 200px}, "slow");
+        $(".displayGroups").animate({fontSize: '1.5em'}, "slow");
     });
-
 });

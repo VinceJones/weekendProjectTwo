@@ -1,6 +1,27 @@
 .displayGroups {
     display: inline-flex;
+    margin-left: 30%;
+    margin-right: 30%;
+    text-align: center;
+    background-color: blue;
+    width: auto;
 }
 button {
     display:inline;
 }
+
+.header {
+    margin: 15px auto 15px auto;
+    text-align: center;
+}
+
+.container {
+    display: block;
+    margin: 15px auto 15px auto;
+}
+/*.group1 .group2 .group3 .group4 .group5 .group6 .group7 .group8 .group9 .group10 {*/
+    /*display: block;*/
+    /*margin-left: 300px;*/
+    /*text-align: center;*/
+    /*background-color: blue;*/
+/*}*/
