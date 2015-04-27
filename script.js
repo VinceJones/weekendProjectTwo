@@ -88,13 +88,14 @@ $(document).ready(function(){
             for (i = 0; i < finishedGroups.length; i++) {
                 groupNum = i + 1;
                 //$(".displayGroups").append("<div class='group" + groupNum + "'>Group " + groupNum+"<br>");
-                $(".displayGroups").append("<div>Group " + groupNum + "<br></div>");
+                $(".displayGroups").append("<div class='group"+groupNum+"'>Group " + groupNum + "<br></div>");
                 for (k = 0; k < finishedGroups[i].length; k++) {
-                    $(".displayGroups").hide().slideDown("slow").append("<br>" + finishedGroups[i][k] + "");
+                    $(".group"+groupNum).hide().slideDown("slow").append("<br>" + finishedGroups[i][k] + "");
+
                 }
-                $(".displayGroups").append("");
             }
             $(".displayGroups").animate({fontSize: '1.25em'}, "slow");
+
             $(".displayGroups").css({backgroundColor: '#07AA9E'});
             $(".displayGroups").css({margin: '15px auto 15px auto'});
             $(".displayGroups").css({width: 'auto'});
