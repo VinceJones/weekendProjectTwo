@@ -7,13 +7,13 @@ var finishedGroups = [];
 var newOrder = [];
 var people = [];
 var newNumPerGroup = [];
+var buttonValue;
 
 function buildNumPerGroup(people, buttonValue) {
     newNumPerGroup = [];
     var peopleLength = people.length;
     var btnVal = buttonValue;
     console.log("People length: " + peopleLength + " Button Value: "+ btnVal);
-
     var baseGroupVal = Math.floor( peopleLength / btnVal);
     console.log("Base group value: " + baseGroupVal);
 
@@ -73,15 +73,13 @@ function buildGroups(btnVal) {
 $(document).ready(function(){
     buttonBuilder();
     $(".header").append("<br><button class='generateBtn' value='generate'>Generate Groups</button>");
-
     $(".header").on('click', ".groupBtn", function(){
-        var buttonValue = $(this).val();
+        buttonValue = $(this).val();
         console.log("Button Value: "+buttonValue);
-        buildGroups(buttonValue);
     });
 
     $(".header").on('click', ".generateBtn", function(){
-
+        buildGroups(buttonValue);
         $(".displayGroups").empty();
         $(".displayGroups").animate({fontSize: '1em'}, "slow");
         for (i = 0; i < finishedGroups.length; i++) {
