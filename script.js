@@ -57,9 +57,10 @@ function buttonBuilder(){
 }
 
 function defineGroupButtonBuilder(){
-    for (k = 2; k < 11; k++) {
+    for (k = 2; k < 7; k++) {
         $(".header").append("<button class='peopleSizeBtn' value='" + k + "'>" + k + "</button>");
     }
+    $(".header").append("<button class='peopleSizeBtn' value='" + 10 + "'>" + 10 + "</button>");
 }
 
 function buildGroups(btnVal, groupSizeBtn) {
