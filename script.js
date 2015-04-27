@@ -79,21 +79,25 @@ $(document).ready(function(){
     });
 
     $(".header").on('click', ".generateBtn", function(){
-        buildGroups(buttonValue);
-        $(".displayGroups").empty();
-        $(".displayGroups").animate({fontSize: '1em'}, "slow");
-        for (i = 0; i < finishedGroups.length; i++) {
-            groupNum = i + 1;
-            //$(".displayGroups").append("<div class='group" + groupNum + "'>Group " + groupNum+"<br>");
-            $(".displayGroups").append("<div>Group " + groupNum+"<br></div>");
-            for (k = 0; k < finishedGroups[i].length; k++) {
-                $(".displayGroups").hide().slideDown("slow").append("<br>" + finishedGroups[i][k] + "");
+        if (buttonValue == undefined) {
+            alert("Please choose a group size");
+        } else {
+            buildGroups(buttonValue);
+            $(".displayGroups").empty();
+            $(".displayGroups").animate({fontSize: '1em'}, "slow");
+            for (i = 0; i < finishedGroups.length; i++) {
+                groupNum = i + 1;
+                //$(".displayGroups").append("<div class='group" + groupNum + "'>Group " + groupNum+"<br>");
+                $(".displayGroups").append("<div>Group " + groupNum + "<br></div>");
+                for (k = 0; k < finishedGroups[i].length; k++) {
+                    $(".displayGroups").hide().slideDown("slow").append("<br>" + finishedGroups[i][k] + "");
+                }
+                $(".displayGroups").append("");
             }
-            $(".displayGroups").append("");
+            $(".displayGroups").animate({fontSize: '1.25em'}, "slow");
+            $(".displayGroups").css({backgroundColor: '#07AA9E'});
+            $(".displayGroups").css({margin: '15px auto 15px auto'});
+            $(".displayGroups").css({width: 'auto'});
         }
-        $(".displayGroups").animate({fontSize: '1.25em'}, "slow");
-        $(".displayGroups").css({backgroundColor: '#07AA9E'});
-        $(".displayGroups").css({margin: '15px auto 15px auto'});
-        $(".displayGroups").css({width: 'auto'});
     });
 });
