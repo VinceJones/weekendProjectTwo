@@ -81,6 +81,7 @@ $(document).ready(function(){
     });
 
     $(".header").on('click', ".generateBtn", function(){
+
         $(".displayGroups").empty();
         $(".displayGroups").animate({fontSize: '1em'}, "slow");
         for (i = 0; i < finishedGroups.length; i++) {

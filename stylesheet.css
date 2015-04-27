@@ -3,29 +3,17 @@ body {
 }
 
 .displayGroups {
-    /*display: inline-flex;*/
-    /*margin: auto;*/
-    /*padding: 15px;*/
-    /*border-radius: 15px;*/
-    /*text-align: center;*/
-    /*font-family: "Poiret One";*/
-    /*background-color: white;*/
-    /*width: auto;*/
-
     display: flex;
     justify-content:center;
     align-content: center;
     margin: 0 20%;
     height: auto;
     width: auto;
-    /*margin-left: 30%;*/
-    /*margin-right: auto;*/
     padding: 15px;
     border-radius: 15px;
     text-align: center;
     font-family: "Poiret One";
     background-color: #809E9B;
-
 }
 
 .container {
