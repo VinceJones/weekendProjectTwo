@@ -14,15 +14,11 @@ function buildNumPerGroup(people, buttonValue, groupSize) {
     newNumPerGroup = [];
     var peopleLength = people.length;
     var btnVal = buttonValue;
-    console.log("People length: " + peopleLength + " Button Value: "+ btnVal +" Group Size: "+ groupSize);
+    console.log("People length: " + peopleLength + " Button Value: "+ btnVal);
     if (buttonValue != undefined) {
         var baseGroupVal = Math.floor(peopleLength / btnVal);
-        var remainder = peopleLength % btnVal;
     } else {
         var baseGroupVal = groupSize;
-        buttonValue = Math.floor( peopleLength / groupSize);
-        var remainder = peopleLength % groupSize;
-        console.log("Remainder: "+buttonValue);
     }
 
     console.log("Base group value: " + baseGroupVal);
@@ -30,11 +26,10 @@ function buildNumPerGroup(people, buttonValue, groupSize) {
     for (k = 0; k < buttonValue; k++){
         newNumPerGroup.push(baseGroupVal);
     }
-    //var remainder = peopleLength % btnVal;
+    var remainder = peopleLength % btnVal;
     console.log("Remainder of peopleLength / buttonValue: " + remainder);
     for (k = 0; k < remainder; k++){
-        newNumPerGroup[k] = parseInt(newNumPerGroup[k]);
-        newNumPerGroup[k]=newNumPerGroup[k]+1;
+        newNumPerGroup[k]+=1;
     }
     console.log("Number of people per group: " + newNumPerGroup);
     return newNumPerGroup;
@@ -66,18 +61,12 @@ function buildGroups(btnVal, groupSizeBtn) {
     peopleForGroups = people.slice(0);
     newOrder = [];
     finishedGroups = [];
-
-    console.log("HERE! : " , btnVal);
-
-
     if (btnVal != undefined){
         buttonValue = btnVal;
-        numPerGroup = buildNumPerGroup(peopleForGroups, buttonValue, undefined);
     } else {
         buttonValue = groupSizeBtn;
-        numPerGroup = buildNumPerGroup(peopleForGroups, undefined, buttonValue);
     }
-    //numPerGroup = buildNumPerGroup(peopleForGroups, buttonValue, 0);
+    numPerGroup = buildNumPerGroup(peopleForGroups, buttonValue, 0);
     newOrder = shuffleArray(peopleForGroups);
 
     console.log("People array: " + peopleForGroups);
@@ -98,22 +87,7 @@ function buildGroups(btnVal, groupSizeBtn) {
 }
 
 function displayGroups() {
-    $(".displayGroups").empty();
-    $(".displayGroups").animate({fontSize: '1em'}, "slow");
-    for (i = 0; i < finishedGroups.length; i++) {
-        groupNum = i + 1;
-        //$(".displayGroups").append("<div class='group" + groupNum + "'>Group " + groupNum+"<br>");
-        $(".displayGroups").append("<div class='group"+groupNum+"'>Group " + groupNum + "<br></div>");
-        for (k = 0; k < finishedGroups[i].length; k++) {
-            $(".group"+groupNum).hide().slideDown("slow").append("<br>" + finishedGroups[i][k] + "");
 
-        }
-    }
-    $(".displayGroups").animate({fontSize: '1.25em'}, "slow");
-
-    $(".displayGroups").css({backgroundColor: '#07AA9E'});
-    $(".displayGroups").css({margin: '15px auto 15px auto'});
-    $(".displayGroups").css({width: 'auto'});
 }
 
 $(document).ready(function(){
@@ -129,7 +103,6 @@ $(document).ready(function(){
         if (buttonValue != undefined){
             groupButtonValue = undefined;
         }
-        console.log("Group Button Value: "+groupButtonValue);
     });
 
     $(".header").on('click', ".peopleSizeBtn", function(){
@@ -138,7 +111,6 @@ $(document).ready(function(){
         if (groupButtonValue != undefined){
             buttonValue = undefined;
         }
-        console.log("Button Value: "+buttonValue);
     });
 
     //--------Pick how many groups--------
@@ -146,19 +118,48 @@ $(document).ready(function(){
         if (buttonValue == undefined) {
             alert("Please choose how many groups you would like");
         } else {
-            buildGroups(buttonValue, groupButtonValue);
+            buildGroups(buttonValue, undefined);
+            $(".displayGroups").empty();
+            $(".displayGroups").animate({fontSize: '1em'}, "slow");
+            for (i = 0; i < finishedGroups.length; i++) {
+                groupNum = i + 1;
+                //$(".displayGroups").append("<div class='group" + groupNum + "'>Group " + groupNum+"<br>");
+                $(".displayGroups").append("<div class='group"+groupNum+"'>Group " + groupNum + "<br></div>");
+                for (k = 0; k < finishedGroups[i].length; k++) {
+                    $(".group"+groupNum).hide().slideDown("slow").append("<br>" + finishedGroups[i][k] + "");
 
-            displayGroups();
+                }
+            }
+            $(".displayGroups").animate({fontSize: '1.25em'}, "slow");
+
+            $(".displayGroups").css({backgroundColor: '#07AA9E'});
+            $(".displayGroups").css({margin: '15px auto 15px auto'});
+            $(".displayGroups").css({width: 'auto'});
         }
     });
 
     //--------Pick how many people per group-------
     $(".header").on('click', ".groupGenerateBtn", function(){
-        if (groupButtonValue == undefined) {
+        if (buttonValue == undefined) {
             alert("Please choose how many people per group");
         } else {
-            buildGroups(buttonValue, groupButtonValue);
-            displayGroups();
+            buildGroups(undefined, groupButtonValue);
+            $(".displayGroups").empty();
+            $(".displayGroups").animate({fontSize: '1em'}, "slow");
+            for (i = 0; i < finishedGroups.length; i++) {
+                groupNum = i + 1;
+                //$(".displayGroups").append("<div class='group" + groupNum + "'>Group " + groupNum+"<br>");
+                $(".displayGroups").append("<div class='group"+groupNum+"'>Group " + groupNum + "<br></div>");
+                for (k = 0; k < finishedGroups[i].length; k++) {
+                    $(".group"+groupNum).hide().slideDown("slow").append("<br>" + finishedGroups[i][k] + "");
+
+                }
+            }
+            $(".displayGroups").animate({fontSize: '1.25em'}, "slow");
+
+            $(".displayGroups").css({backgroundColor: '#07AA9E'});
+            $(".displayGroups").css({margin: '15px auto 15px auto'});
+            $(".displayGroups").css({width: 'auto'});
         }
     });
 });
